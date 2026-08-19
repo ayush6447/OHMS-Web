@@ -17,7 +17,7 @@ export const Metrics: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] font-mono text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-[#636B2F] dark:text-[#80EF80] font-mono text-xs font-bold uppercase tracking-wider">
             CLINICAL PROOF &amp; METRICS
           </div>
 
@@ -34,7 +34,7 @@ export const Metrics: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           
           <div className="skeu-panel p-6 rounded-3xl text-left">
-            <div className="font-mono text-4xl sm:text-5xl font-bold text-[#4CAF50] dark:text-[#80EF80] mb-2">
+            <div className="font-mono text-4xl sm:text-5xl font-bold text-[#636B2F] dark:text-[#80EF80] mb-2">
               10 <span className="text-2xl font-normal opacity-80">kHz</span>
             </div>
             <div className="font-heading text-lg font-bold mb-1">
@@ -46,7 +46,7 @@ export const Metrics: React.FC = () => {
           </div>
 
           <div className="skeu-panel p-6 rounded-3xl text-left">
-            <div className="font-mono text-3xl sm:text-4xl font-bold text-[#4CAF50] dark:text-[#80EF80] mb-2">
+            <div className="font-mono text-3xl sm:text-4xl font-bold text-[#636B2F] dark:text-[#80EF80] mb-2">
               1200 &amp; 1720 <span className="text-xl font-normal opacity-80">nm</span>
             </div>
             <div className="font-heading text-lg font-bold mb-1">
@@ -70,7 +70,7 @@ export const Metrics: React.FC = () => {
           </div>
 
           <div className="skeu-panel p-6 rounded-3xl text-left">
-            <div className="font-mono text-4xl sm:text-5xl font-bold text-[#4CAF50] dark:text-[#80EF80] mb-2">
+            <div className="font-mono text-4xl sm:text-5xl font-bold text-[#636B2F] dark:text-[#80EF80] mb-2">
               &lt; 5 <span className="text-2xl font-normal opacity-80">sec</span>
             </div>
             <div className="font-heading text-lg font-bold mb-1">
@@ -89,7 +89,7 @@ export const Metrics: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-black/10 dark:border-white/10 pb-4 mb-6 gap-4">
             <div>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-[#4CAF50] dark:text-[#80EF80]" />
+                <ShieldCheck className="w-5 h-5 text-[#636B2F] dark:text-[#80EF80]" />
                 <h3 className="font-heading text-xl font-bold">
                   Paired Validation Inspector
                 </h3>
@@ -107,7 +107,7 @@ export const Metrics: React.FC = () => {
                   onClick={() => setSelectedSample(idx)}
                   className={`px-3 py-1.5 rounded-lg font-mono text-xs transition-all font-bold ${
                     selectedSample === idx
-                      ? 'skeu-btn text-black'
+                      ? 'skeu-btn'
                       : 'opacity-70 hover:opacity-100'
                   }`}
                 >
@@ -132,9 +132,9 @@ export const Metrics: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="skeu-panel p-3 rounded-xl border border-[#80EF80]">
-                  <div className="text-[10px] font-mono text-[#4CAF50] dark:text-[#80EF80] font-bold">OHMS Spectrometer</div>
-                  <div className="font-mono text-2xl font-bold mt-1 text-[#4CAF50] dark:text-[#80EF80]">
+                <div className="skeu-panel p-3 rounded-xl border border-[#636B2F] dark:border-[#80EF80]">
+                  <div className="text-[10px] font-mono text-[#636B2F] dark:text-[#80EF80] font-bold">OHMS Spectrometer</div>
+                  <div className="font-mono text-2xl font-bold mt-1 text-[#636B2F] dark:text-[#80EF80]">
                     {sampleData[selectedSample].ohmsChol}
                     <span className="text-xs opacity-60 font-normal ml-1">mg/dL</span>
                   </div>
@@ -142,7 +142,7 @@ export const Metrics: React.FC = () => {
               </div>
               <div className="mt-3 flex items-center justify-between text-xs font-mono opacity-80 pt-2 border-t border-black/10 dark:border-white/10 font-bold">
                 <span>Variance:</span>
-                <span className="text-[#4CAF50] dark:text-[#80EF80]">
+                <span className="text-[#636B2F] dark:text-[#80EF80]">
                   {Math.abs(sampleData[selectedSample].labSerumChol - sampleData[selectedSample].ohmsChol)} mg/dL (1.6% delta)
                 </span>
               </div>
@@ -160,9 +160,9 @@ export const Metrics: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="skeu-panel p-3 rounded-xl border border-[#80EF80]">
-                  <div className="text-[10px] font-mono text-[#4CAF50] dark:text-[#80EF80] font-bold">OHMS Spectrometer</div>
-                  <div className="font-mono text-2xl font-bold mt-1 text-[#4CAF50] dark:text-[#80EF80]">
+                <div className="skeu-panel p-3 rounded-xl border border-[#636B2F] dark:border-[#80EF80]">
+                  <div className="text-[10px] font-mono text-[#636B2F] dark:text-[#80EF80] font-bold">OHMS Spectrometer</div>
+                  <div className="font-mono text-2xl font-bold mt-1 text-[#636B2F] dark:text-[#80EF80]">
                     {sampleData[selectedSample].ohmsTri}
                     <span className="text-xs opacity-60 font-normal ml-1">mg/dL</span>
                   </div>
@@ -170,7 +170,7 @@ export const Metrics: React.FC = () => {
               </div>
               <div className="mt-3 flex items-center justify-between text-xs font-mono opacity-80 pt-2 border-t border-black/10 dark:border-white/10 font-bold">
                 <span>Variance:</span>
-                <span className="text-[#4CAF50] dark:text-[#80EF80]">
+                <span className="text-[#636B2F] dark:text-[#80EF80]">
                   {Math.abs(sampleData[selectedSample].labSerumTri - sampleData[selectedSample].ohmsTri)} mg/dL (2.1% delta)
                 </span>
               </div>

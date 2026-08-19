@@ -9,7 +9,7 @@ export const Problem: React.FC = () => {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] font-mono text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-[#636B2F] dark:text-[#80EF80] font-mono text-xs font-bold uppercase tracking-wider">
             THE LIMITATION OF STANDARD LIPID PANELS
           </div>
           
@@ -27,7 +27,7 @@ export const Problem: React.FC = () => {
           
           {/* Card 1 */}
           <div className="skeu-panel p-8 rounded-3xl transition-all">
-            <div className="w-12 h-12 rounded-2xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-2xl skeu-inset text-[#636B2F] dark:text-[#80EF80] flex items-center justify-center mb-6">
               <Syringe className="w-6 h-6" />
             </div>
             <h3 className="font-heading text-xl font-bold text-black dark:text-white mb-2">
@@ -36,7 +36,7 @@ export const Problem: React.FC = () => {
             <p className="text-sm text-black/70 dark:text-white/70 leading-relaxed mb-6">
               Needles require clinical visits, trained phlebotomists, and biohazard handling, creating high friction for frequent testing.
             </p>
-            <div className="pt-4 border-t border-black/10 dark:border-white/10 flex items-center gap-2 font-mono text-xs text-[#4CAF50] dark:text-[#80EF80] font-bold">
+            <div className="pt-4 border-t border-black/10 dark:border-white/10 flex items-center gap-2 font-mono text-xs text-[#636B2F] dark:text-[#80EF80] font-bold">
               <CheckCircle2 className="w-4 h-4" />
               <span>OHMS: 100% Optical &amp; Needle-Free</span>
             </div>
@@ -44,7 +44,7 @@ export const Problem: React.FC = () => {
 
           {/* Card 2 */}
           <div className="skeu-panel p-8 rounded-3xl transition-all">
-            <div className="w-12 h-12 rounded-2xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-2xl skeu-inset text-[#636B2F] dark:text-[#80EF80] flex items-center justify-center mb-6">
               <Clock className="w-6 h-6" />
             </div>
             <h3 className="font-heading text-xl font-bold text-black dark:text-white mb-2">
@@ -53,7 +53,7 @@ export const Problem: React.FC = () => {
             <p className="text-sm text-black/70 dark:text-white/70 leading-relaxed mb-6">
               Samples sent to central labs take 3–5 days to report results, delaying actionable intervention when time matters.
             </p>
-            <div className="pt-4 border-t border-black/10 dark:border-white/10 flex items-center gap-2 font-mono text-xs text-[#4CAF50] dark:text-[#80EF80] font-bold">
+            <div className="pt-4 border-t border-black/10 dark:border-white/10 flex items-center gap-2 font-mono text-xs text-[#636B2F] dark:text-[#80EF80] font-bold">
               <CheckCircle2 className="w-4 h-4" />
               <span>OHMS: Instant Readouts in &lt; 5 sec</span>
             </div>
@@ -61,7 +61,7 @@ export const Problem: React.FC = () => {
 
           {/* Card 3 */}
           <div className="skeu-panel p-8 rounded-3xl transition-all">
-            <div className="w-12 h-12 rounded-2xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-2xl skeu-inset text-[#636B2F] dark:text-[#80EF80] flex items-center justify-center mb-6">
               <TrendingDown className="w-6 h-6" />
             </div>
             <h3 className="font-heading text-xl font-bold text-black dark:text-white mb-2">
@@ -70,7 +70,7 @@ export const Problem: React.FC = () => {
             <p className="text-sm text-black/70 dark:text-white/70 leading-relaxed mb-6">
               Annual lipid panels miss diurnal fluctuations, dietary triggers, and acute drug metabolism patterns between annual physicals.
             </p>
-            <div className="pt-4 border-t border-black/10 dark:border-white/10 flex items-center gap-2 font-mono text-xs text-[#4CAF50] dark:text-[#80EF80] font-bold">
+            <div className="pt-4 border-t border-black/10 dark:border-white/10 flex items-center gap-2 font-mono text-xs text-[#636B2F] dark:text-[#80EF80] font-bold">
               <CheckCircle2 className="w-4 h-4" />
               <span>OHMS: Continuous Trend Spectroscopy</span>
             </div>
@@ -83,7 +83,7 @@ export const Problem: React.FC = () => {
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left divide-y md:divide-y-0 md:divide-x divide-black/10 dark:divide-white/10">
             
             <div className="pt-4 md:pt-0 md:pr-6">
-              <div className="font-mono text-4xl sm:text-5xl font-bold text-[#4CAF50] dark:text-[#80EF80] mb-2">
+              <div className="font-mono text-4xl sm:text-5xl font-bold text-[#636B2F] dark:text-[#80EF80] mb-2">
                 <CountUp end={38} suffix="%" />
               </div>
               <p className="text-sm opacity-80 font-normal">
@@ -107,7 +107,7 @@ export const Problem: React.FC = () => {
             </div>
 
             <div className="pt-6 md:pt-0 md:pl-6">
-              <div className="font-mono text-4xl sm:text-5xl font-bold text-[#4CAF50] dark:text-[#80EF80] mb-2">
+              <div className="font-mono text-4xl sm:text-5xl font-bold text-[#636B2F] dark:text-[#80EF80] mb-2">
                 &lt; 5s
               </div>
               <p className="text-sm opacity-80 font-normal">

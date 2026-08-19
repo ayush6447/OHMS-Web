@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
         {/* Call to action header banner */}
         <div className="skeu-panel p-8 sm:p-12 rounded-3xl mb-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <div className="font-mono text-xs text-[#4CAF50] dark:text-[#80EF80] uppercase tracking-wider mb-2 font-bold">
+            <div className="font-mono text-xs text-[#636B2F] dark:text-[#80EF80] uppercase tracking-wider mb-2 font-bold">
               NON-INVASIVE LIPID SPECTROMETRY
             </div>
             <h3 className="font-heading text-2xl sm:text-3xl font-bold">
@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
 
           <button
             onClick={onOpenContact}
-            className="inline-flex items-center gap-2 skeu-btn text-black font-bold text-sm px-6 py-3 rounded-xl shadow-md shrink-0"
+            className="inline-flex items-center gap-2 skeu-btn font-bold text-sm px-6 py-3 rounded-xl shadow-md shrink-0"
           >
             <span>Get in touch</span>
             <ChevronRight className="w-4 h-4" />
@@ -46,8 +46,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-[#80EF80] flex items-center justify-center border border-white/60">
-                <span className="w-2.5 h-2.5 rounded-full bg-black dark:bg-white animate-pulse" />
+              <div className="w-8 h-8 rounded-xl bg-[#636B2F] text-white dark:bg-[#80EF80] dark:text-black flex items-center justify-center border border-white/60">
+                <span className="w-2.5 h-2.5 rounded-full bg-white dark:bg-white animate-pulse" />
               </div>
               <span className="font-heading text-xl font-bold tracking-tight">
                 OHMS
@@ -59,7 +59,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             </p>
 
             <div className="font-mono text-xs opacity-70 pt-2 flex items-center gap-2 font-bold">
-              <Mail className="w-4 h-4 text-[#4CAF50] dark:text-[#80EF80]" />
+              <Mail className="w-4 h-4 text-[#636B2F] dark:text-[#80EF80]" />
               <a href="mailto:rishavrajvansh@proton.me" className="hover:underline">
                 rishavrajvansh@proton.me
               </a>
@@ -67,13 +67,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           </div>
 
           <div className="md:col-span-4 space-y-3">
-            <div className="font-mono text-xs text-[#4CAF50] dark:text-[#80EF80] font-bold uppercase tracking-wider">
+            <div className="font-mono text-xs text-[#636B2F] dark:text-[#80EF80] font-bold uppercase tracking-wider">
               Navigation
             </div>
             <ul className="space-y-2 text-sm opacity-80 font-medium">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="hover:text-[#4CAF50] dark:hover:text-[#80EF80] transition-colors">
+                  <a href={link.href} className="hover:text-[#636B2F] dark:hover:text-[#80EF80] transition-colors">
                     {link.name}
                   </a>
                 </li>
@@ -82,7 +82,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           </div>
 
           <div className="md:col-span-3 space-y-3">
-            <div className="font-mono text-xs text-[#4CAF50] dark:text-[#80EF80] font-bold uppercase tracking-wider">
+            <div className="font-mono text-xs text-[#636B2F] dark:text-[#80EF80] font-bold uppercase tracking-wider">
               System Specs
             </div>
             <ul className="space-y-1.5 font-mono text-xs opacity-70 font-bold">
@@ -102,7 +102,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           <div className="flex items-center gap-4">
             <span>OHMS Spectrometry Lab</span>
             <span>•</span>
-            <span>Dr. Ayas Chinmay · Aryan Raj · Rishav Singh</span>
+            <span>Dr. Ayes Chinmay · Aryan Raj · Rishav Singh</span>
           </div>
         </div>
 

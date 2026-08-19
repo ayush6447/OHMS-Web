@@ -31,15 +31,15 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-[#80EF80] p-6 sm:p-8 text-black relative">
+        <div className="bg-[#636B2F] text-white dark:bg-[#80EF80] dark:text-black p-6 sm:p-8 relative">
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 p-2 text-black/80 hover:text-black rounded-full bg-black/10 hover:bg-black/20 transition-colors"
+            className="absolute top-6 right-6 p-2 text-white/80 dark:text-black/80 hover:text-white dark:hover:text-black rounded-full bg-black/10 hover:bg-black/20 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
 
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/10 text-black font-mono text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 dark:bg-black/10 text-white dark:text-black font-mono text-xs font-bold uppercase tracking-wider mb-3">
             GET IN TOUCH
           </div>
 
@@ -57,7 +57,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           {/* Direct Email Copy Box */}
           <div className="skeu-inset p-4 rounded-2xl flex items-center justify-between shadow-sm">
             <div className="flex items-center gap-3 overflow-hidden">
-              <div className="w-10 h-10 rounded-xl skeu-btn text-black flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xl skeu-btn flex items-center justify-center shrink-0">
                 <Mail className="w-5 h-5" />
               </div>
               <div className="min-w-0">
@@ -70,7 +70,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
             <button
               onClick={handleCopyEmail}
-              className="px-3.5 py-2 rounded-xl skeu-btn text-black font-mono text-xs font-bold flex items-center gap-1.5 shrink-0"
+              className="px-3.5 py-2 rounded-xl skeu-btn font-mono text-xs font-bold flex items-center gap-1.5 shrink-0"
             >
               {copied ? (
                 <>
@@ -89,7 +89,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           {/* Inquiry Form */}
           {submitted ? (
             <div className="p-6 rounded-2xl skeu-inset text-center space-y-3">
-              <ShieldCheck className="w-10 h-10 text-[#4CAF50] dark:text-[#80EF80] mx-auto" />
+              <ShieldCheck className="w-10 h-10 text-[#636B2F] dark:text-[#80EF80] mx-auto" />
               <h4 className="font-heading text-lg font-bold">
                 Inquiry Sent Successfully
               </h4>

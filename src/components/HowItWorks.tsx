@@ -49,7 +49,7 @@ export const HowItWorks: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] font-mono text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-[#636B2F] dark:text-[#80EF80] font-mono text-xs font-bold uppercase tracking-wider">
             OPTICAL SPECTROSCOPY PROCESS
           </div>
 
@@ -76,15 +76,15 @@ export const HowItWorks: React.FC = () => {
                   onClick={() => setActiveStep(idx)}
                   className={`w-full text-left p-5 rounded-2xl transition-all duration-200 border flex items-start gap-4 ${
                     isActive
-                      ? 'skeu-panel border-[#80EF80] translate-x-1'
+                      ? 'skeu-panel border-[#636B2F] dark:border-[#80EF80] translate-x-1'
                       : 'skeu-inset hover:opacity-100 opacity-80 border-transparent'
                   }`}
                 >
                   <div
                     className={`font-mono text-sm font-bold px-2.5 py-1 rounded-lg transition-colors ${
                       isActive
-                        ? 'skeu-btn text-black'
-                        : 'skeu-inset text-[#4CAF50] dark:text-[#80EF80]'
+                        ? 'skeu-btn font-bold'
+                        : 'skeu-inset text-[#636B2F] dark:text-[#80EF80]'
                     }`}
                   >
                     {step.num}
@@ -101,7 +101,7 @@ export const HowItWorks: React.FC = () => {
 
                   <div
                     className={`p-2 rounded-xl ${
-                      isActive ? 'text-[#4CAF50] dark:text-[#80EF80]' : 'opacity-40'
+                      isActive ? 'text-[#636B2F] dark:text-[#80EF80]' : 'opacity-40'
                     }`}
                   >
                     <Icon className="w-5 h-5" />
@@ -118,8 +118,8 @@ export const HowItWorks: React.FC = () => {
               {/* Header Badge */}
               <div className="flex items-center justify-between border-b border-black/10 dark:border-white/10 pb-4 mb-6">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#80EF80] animate-pulse" />
-                  <span className="font-mono text-xs font-bold text-[#4CAF50] dark:text-[#80EF80] uppercase tracking-widest">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#636B2F] dark:bg-[#80EF80] animate-pulse" />
+                  <span className="font-mono text-xs font-bold text-[#636B2F] dark:text-[#80EF80] uppercase tracking-widest">
                     STEP {steps[activeStep].num} — {steps[activeStep].tag}
                   </span>
                 </div>
@@ -130,7 +130,7 @@ export const HowItWorks: React.FC = () => {
 
               {/* Step Content */}
               <div className="space-y-6 my-auto">
-                <div className="inline-flex p-4 rounded-2xl skeu-btn text-black">
+                <div className="inline-flex p-4 rounded-2xl skeu-btn">
                   {React.createElement(steps[activeStep].icon, { className: 'w-8 h-8' })}
                 </div>
 
@@ -143,7 +143,7 @@ export const HowItWorks: React.FC = () => {
                 </p>
 
                 <div className="p-4 rounded-xl skeu-inset font-mono text-xs leading-relaxed flex items-start gap-3">
-                  <span className="text-[#4CAF50] dark:text-[#80EF80] font-bold">INFO:</span>
+                  <span className="text-[#636B2F] dark:text-[#80EF80] font-bold">INFO:</span>
                   <span>{steps[activeStep].detail}</span>
                 </div>
               </div>
@@ -155,7 +155,7 @@ export const HowItWorks: React.FC = () => {
                     <span
                       key={i}
                       className={`h-2 rounded-full transition-all duration-300 ${
-                        i === activeStep ? 'w-8 bg-[#80EF80]' : 'w-2 bg-black/20 dark:bg-white/20'
+                        i === activeStep ? 'w-8 bg-[#636B2F] dark:bg-[#80EF80]' : 'w-2 bg-black/20 dark:bg-white/20'
                       }`}
                     />
                   ))}

@@ -37,7 +37,7 @@ export const Technology: React.FC = () => {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] font-mono text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-[#636B2F] dark:text-[#80EF80] font-mono text-xs font-bold uppercase tracking-wider">
             CLINICAL INSTRUMENTATION ARCHITECTURE
           </div>
 
@@ -60,10 +60,10 @@ export const Technology: React.FC = () => {
                 className="skeu-panel p-8 rounded-3xl transition-all group"
               >
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-2xl skeu-inset text-[#636B2F] dark:text-[#80EF80] flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <span className="font-mono text-xs font-bold px-3 py-1 rounded-xl skeu-inset text-[#4CAF50] dark:text-[#80EF80]">
+                  <span className="font-mono text-xs font-bold px-3 py-1 rounded-xl skeu-inset text-[#636B2F] dark:text-[#80EF80]">
                     {pillar.spec}
                   </span>
                 </div>

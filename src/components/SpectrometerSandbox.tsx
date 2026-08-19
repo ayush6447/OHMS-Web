@@ -46,7 +46,7 @@ export const SpectrometerSandbox: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between border-b border-black/10 dark:border-white/10 pb-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl skeu-inset text-[#636B2F] dark:text-[#80EF80] flex items-center justify-center">
             <Sliders className="w-5 h-5" />
           </div>
           <div>
@@ -59,8 +59,8 @@ export const SpectrometerSandbox: React.FC = () => {
           </div>
         </div>
 
-        <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] font-mono text-xs font-bold">
-          <Zap className="w-3.5 h-3.5 text-[#80EF80]" />
+        <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-xl skeu-inset text-[#636B2F] dark:text-[#80EF80] font-mono text-xs font-bold">
+          <Zap className="w-3.5 h-3.5 text-[#636B2F] dark:text-[#80EF80]" />
           <span>10 kHz Lock-In Active</span>
         </div>
       </div>
@@ -68,21 +68,21 @@ export const SpectrometerSandbox: React.FC = () => {
       {/* SVG Spectrum Curve Canvas */}
       <div className="relative h-48 w-full skeu-inset rounded-2xl p-4 overflow-hidden">
         
-        <div className="absolute top-2 left-[25%] -translate-x-1/2 text-[10px] font-mono text-black dark:text-white skeu-inset px-2 py-0.5 rounded-lg border border-[#80EF80]/40 font-bold">
+        <div className="absolute top-2 left-[25%] -translate-x-1/2 text-[10px] font-mono text-black dark:text-white skeu-inset px-2 py-0.5 rounded-lg border border-[#636B2F]/40 dark:border-[#80EF80]/40 font-bold">
           1200nm (Cholesterol)
         </div>
-        <div className="absolute top-2 left-[90%] -translate-x-1/2 text-[10px] font-mono text-black dark:text-white skeu-inset px-2 py-0.5 rounded-lg border border-[#80EF80]/40 font-bold">
+        <div className="absolute top-2 left-[90%] -translate-x-1/2 text-[10px] font-mono text-black dark:text-white skeu-inset px-2 py-0.5 rounded-lg border border-[#636B2F]/40 dark:border-[#80EF80]/40 font-bold">
           1720nm (Triglycerides)
         </div>
 
-        <svg className="w-full h-full overflow-visible" viewBox="1000 0 800 100" preserveAspectRatio="none">
+        <svg className="w-full h-full overflow-visible text-[#636B2F] dark:text-[#80EF80]" viewBox="1000 0 800 100" preserveAspectRatio="none">
           <defs>
             <linearGradient id="spectrumGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#80EF80" stopOpacity="0.2" />
-              <stop offset="25%" stopColor="#80EF80" stopOpacity="0.8" />
-              <stop offset="60%" stopColor="#80EF80" stopOpacity="0.2" />
-              <stop offset="90%" stopColor="#80EF80" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#80EF80" stopOpacity="0.2" />
+              <stop offset="0%" stopColor="currentColor" stopOpacity="0.2" />
+              <stop offset="25%" stopColor="currentColor" stopOpacity="0.8" />
+              <stop offset="60%" stopColor="currentColor" stopOpacity="0.2" />
+              <stop offset="90%" stopColor="currentColor" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="currentColor" stopOpacity="0.2" />
             </linearGradient>
           </defs>
 
@@ -94,7 +94,7 @@ export const SpectrometerSandbox: React.FC = () => {
           <path
             d="M 1000 80 Q 1100 85, 1175 40 T 1225 40 T 1300 80 Q 1500 85, 1680 15 T 1750 15 L 1800 80"
             fill="none"
-            stroke="#80EF80"
+            stroke="currentColor"
             strokeWidth="3.5"
           />
 
@@ -103,7 +103,7 @@ export const SpectrometerSandbox: React.FC = () => {
             y1="0"
             x2={wavelength}
             y2="100"
-            stroke="#80EF80"
+            stroke="currentColor"
             strokeWidth="2"
             strokeDasharray="4 2"
           />
@@ -112,7 +112,7 @@ export const SpectrometerSandbox: React.FC = () => {
             cx={wavelength}
             cy={100 - currentAbsorbance * 85}
             r="6"
-            fill="#80EF80"
+            fill="currentColor"
             stroke="#000000"
             strokeWidth="2"
           />
@@ -124,7 +124,7 @@ export const SpectrometerSandbox: React.FC = () => {
       <div className="space-y-2">
         <div className="flex items-center justify-between text-xs font-mono font-bold">
           <span>Target Wavelength:</span>
-          <span className="text-sm font-bold text-[#4CAF50] dark:text-[#80EF80]">{wavelength} nm</span>
+          <span className="text-sm font-bold text-[#636B2F] dark:text-[#80EF80]">{wavelength} nm</span>
         </div>
         <input
           type="range"
@@ -133,7 +133,7 @@ export const SpectrometerSandbox: React.FC = () => {
           step="5"
           value={wavelength}
           onChange={(e) => setWavelength(Number(e.target.value))}
-          className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-[#80EF80] skeu-inset"
+          className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-[#636B2F] dark:accent-[#80EF80] skeu-inset"
         />
         <div className="flex justify-between text-[10px] font-mono opacity-60 font-bold">
           <span>1000 nm</span>
@@ -149,7 +149,7 @@ export const SpectrometerSandbox: React.FC = () => {
         <div>
           <div className="flex items-center gap-2">
             <span
-              className="w-2.5 h-2.5 rounded-full bg-[#80EF80]"
+              className="w-2.5 h-2.5 rounded-full bg-[#636B2F] dark:bg-[#80EF80]"
             />
             <span className="font-mono text-xs font-bold uppercase tracking-wider">
               {peakInfo.type}
@@ -165,10 +165,10 @@ export const SpectrometerSandbox: React.FC = () => {
 
         <div className="skeu-panel p-3 rounded-xl font-mono text-center min-w-[120px]">
           <div className="text-[10px] opacity-60 uppercase font-bold">Absorbance</div>
-          <div className="text-xl font-bold text-[#4CAF50] dark:text-[#80EF80] mt-0.5">
+          <div className="text-xl font-bold text-[#636B2F] dark:text-[#80EF80] mt-0.5">
             {currentAbsorbance.toFixed(3)}
           </div>
-          <div className="text-[9px] text-[#4CAF50] dark:text-[#80EF80] font-bold mt-0.5">Δ OD Units</div>
+          <div className="text-[9px] text-[#636B2F] dark:text-[#80EF80] font-bold mt-0.5">Δ OD Units</div>
         </div>
       </div>
 

@@ -9,7 +9,8 @@ export const Team: React.FC = () => {
       subtitle: 'Director, SensorSpine · Assistant Professor, SOA',
       bio: 'Leading mentor in biomedical sensing and opto-mechanical instrumentation. Guiding clinical validation protocols, sensor architecture, and research methodology.',
       tag: 'DIRECTOR & MENTOR',
-      email: 'ayas.chinmay@sensorspine.org',
+      email: 'ayes.chinmay@sensorspine.org',
+      image: '/team/ayes.webp',
       icon: Stethoscope,
     },
     {
@@ -19,6 +20,7 @@ export const Team: React.FC = () => {
       bio: 'Specializing in dual-wavelength laser diode optical paths, InGaAs photodiode integration, and Teensy microcontroller DSP circuit design.',
       tag: 'ML & HARDWARE',
       email: 'aryan.raj@ohms-med.org',
+      image: '/team/aryan.webp',
       icon: Cpu,
     },
     {
@@ -28,6 +30,7 @@ export const Team: React.FC = () => {
       bio: 'Architecting digital lock-in demodulation algorithms, spectroscopic machine learning models, and real-time lipid calculation software pipelines.',
       tag: 'AI & SOFTWARE',
       email: 'rishav.singh@ohms-med.org',
+      image: '/team/rishav.webp',
       icon: Code,
     },
   ];
@@ -38,7 +41,7 @@ export const Team: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] font-mono text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-[#636B2F] dark:text-[#80EF80] font-mono text-xs font-bold uppercase tracking-wider">
             MEDTECH TEAM &amp; ADVISORS
           </div>
 
@@ -58,11 +61,25 @@ export const Team: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="skeu-panel p-8 rounded-3xl transition-all flex flex-col justify-between"
+                className="skeu-panel p-8 rounded-3xl transition-all flex flex-col justify-between group"
               >
                 <div>
-                  <div className="w-20 h-20 rounded-2xl skeu-inset text-[#4CAF50] dark:text-[#80EF80] flex items-center justify-center mb-6">
-                    <Icon className="w-10 h-10" />
+                  {/* Photo Avatar */}
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl skeu-inset overflow-hidden mb-6 p-1 border border-black/10 dark:border-white/10">
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover object-center rounded-xl transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full rounded-xl skeu-inset text-[#636B2F] dark:text-[#80EF80] flex items-center justify-center">
+                        <Icon className="w-10 h-10" />
+                      </div>
+                    )}
+                    <div className="absolute bottom-2 right-2 p-1.5 rounded-lg skeu-panel text-[#636B2F] dark:text-[#80EF80] shadow-sm">
+                      <Icon className="w-3.5 h-3.5" />
+                    </div>
                   </div>
 
                   <span className="font-mono text-[10px] font-bold tracking-wider text-black dark:text-white uppercase px-2.5 py-1 rounded-lg skeu-inset inline-block mb-3">
@@ -73,7 +90,7 @@ export const Team: React.FC = () => {
                     {member.name}
                   </h3>
 
-                  <div className="text-xs font-mono text-[#4CAF50] dark:text-[#80EF80] font-bold mt-1 mb-1">
+                  <div className="text-xs font-mono text-[#636B2F] dark:text-[#80EF80] font-bold mt-1 mb-1">
                     {member.role}
                   </div>
 
@@ -89,7 +106,7 @@ export const Team: React.FC = () => {
                 <div className="pt-6 mt-6 border-t border-black/10 dark:border-white/10 flex items-center justify-between">
                   <a
                     href={`mailto:${member.email}`}
-                    className="inline-flex items-center gap-2 text-xs font-mono text-[#4CAF50] dark:text-[#80EF80] hover:underline font-bold"
+                    className="inline-flex items-center gap-2 text-xs font-mono text-[#636B2F] dark:text-[#80EF80] hover:underline font-bold"
                   >
                     <Mail className="w-4 h-4" />
                     <span>Contact</span>
