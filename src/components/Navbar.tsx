@@ -1,164 +1,117 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, Sun, Moon } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react';
+import { Menu, X } from 'lucide-react';
+import { Logo } from './Logo';
+import { ThemeToggle } from './ThemeToggle';
+import { NAV_LINKS } from '@/content/site';
 
-interface NavbarProps {
-  onOpenContact: () => void;
-  darkMode: boolean;
-  onToggleDarkMode: () => void;
-}
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, darkMode, onToggleDarkMode }) => {
+/**
+ * Floating pill navbar. Past the top of the page it shrinks slightly and its
+ * frosted backdrop fades in — transform + opacity only.
+ */
+export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 40));
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+    if (!open) return;
+    firstLinkRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: 'The Problem', href: '#problem' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Technology', href: '#technology' },
-    { name: 'Metrics', href: '#metrics' },
-    { name: 'Team', href: '#team' },
-  ];
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/90 dark:bg-[#0A0A0A]/90 backdrop-blur-md border-b border-black/10 dark:border-white/10 py-3 shadow-sm'
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-xl bg-[#636B2F] text-white dark:bg-[#80EF80] dark:text-black shadow-md group-hover:scale-105 transition-transform border border-white/60">
-              <span className="w-2.5 h-2.5 rounded-full bg-white dark:bg-white animate-pulse" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-heading text-xl font-bold tracking-tight text-black dark:text-white leading-none">
-                OHMS
-              </span>
-              <span className="font-mono text-[9px] tracking-widest text-[#636B2F] dark:text-[#80EF80] uppercase mt-0.5 font-bold">
-                Spectrometer
-              </span>
-            </div>
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-3 sm:pt-4">
+      <div
+        className="pointer-events-auto relative w-full max-w-5xl origin-top transition-transform duration-500 ease-out-expo"
+        style={{ transform: scrolled ? 'scale(0.97) translateY(-2px)' : 'none' }}
+      >
+        {/* Frosted backdrop; fades in once the page has scrolled. */}
+        <div
+          aria-hidden
+          className="glass absolute inset-0 rounded-full bg-[color-mix(in_srgb,var(--c-surface)_82%,transparent)] transition-opacity duration-500"
+          style={{ opacity: scrolled || open ? 1 : 0.55 }}
+        />
+        <nav aria-label="Primary" className="relative flex h-14 items-center justify-between gap-2 pl-4 pr-2 sm:pl-5">
+          <a href="#top" className="rounded-full" aria-label="OMHS — back to top">
+            <Logo size={28} />
           </a>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-sm font-semibold text-black/80 dark:text-white/80 hover:text-[#636B2F] dark:hover:text-[#80EF80] transition-colors"
-              >
-                {link.name}
-              </a>
+          <ul className="hidden items-center gap-1 md:flex">
+            {NAV_LINKS.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="rounded-full px-3.5 py-2 text-sm font-medium text-muted-text transition-colors hover:bg-badge/70 hover:text-ink"
+                >
+                  {l.label}
+                </a>
+              </li>
             ))}
-          </nav>
+          </ul>
 
-          {/* Right Action: Light/Dark Toggle + System Badge + Skeuomorphic CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            
-            {/* Theme Toggle */}
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
+            <a href="#waitlist" className="btn btn-primary hidden min-h-10 px-5 text-sm sm:inline-flex">
+              Join waitlist
+            </a>
             <button
-              onClick={onToggleDarkMode}
-              className="p-2.5 rounded-xl skeu-inset text-black dark:text-white hover:opacity-80 transition-opacity"
-              aria-label="Toggle Light/Dark Theme"
-              title="Toggle Theme"
+              ref={toggleRef}
+              type="button"
+              className="grid size-10 place-items-center rounded-full text-ink hover:bg-badge md:hidden"
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              onClick={() => setOpen((o) => !o)}
             >
-              {darkMode ? <Sun className="w-4 h-4 text-[#80EF80]" /> : <Moon className="w-4 h-4 text-[#636B2F]" />}
-            </button>
-
-            {/* Live System Badge */}
-            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl skeu-inset text-black dark:text-white text-xs font-mono">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#636B2F] dark:bg-[#80EF80] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#636B2F] dark:bg-[#80EF80]"></span>
-              </span>
-              <span className="font-bold">10 kHz LOCK-IN ACTIVE</span>
-            </div>
-
-            {/* Primary Skeuomorphic CTA */}
-            <button
-              onClick={onOpenContact}
-              className="inline-flex items-center gap-2 skeu-btn font-bold text-sm px-5 py-2.5 rounded-xl"
-            >
-              <span>Get in touch</span>
-              <ChevronRight className="w-4 h-4" />
-            </button>
-
-          </div>
-
-          {/* Mobile menu trigger */}
-          <div className="flex items-center gap-3 md:hidden">
-            <button
-              onClick={onToggleDarkMode}
-              className="p-2 rounded-xl skeu-inset text-black dark:text-white"
-            >
-              {darkMode ? <Sun className="w-4 h-4 text-[#80EF80]" /> : <Moon className="w-4 h-4 text-[#636B2F]" />}
-            </button>
-
-            <button
-              onClick={onOpenContact}
-              className="skeu-btn text-xs font-bold px-3.5 py-2 rounded-xl"
-            >
-              Contact
-            </button>
-
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-black dark:text-white"
-              aria-label="Toggle Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
             </button>
           </div>
+        </nav>
 
-        </div>
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              id="mobile-menu"
+              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="glass absolute inset-x-0 top-[calc(100%+8px)] origin-top rounded-[28px] p-3 md:hidden"
+            >
+              <ul className="flex flex-col">
+                {NAV_LINKS.map((l, i) => (
+                  <li key={l.href}>
+                    <a
+                      ref={i === 0 ? firstLinkRef : undefined}
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className="block rounded-2xl px-4 py-3 text-lg font-medium text-ink hover:bg-badge"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <a href="#waitlist" onClick={() => setOpen(false)} className="btn btn-primary mt-2 w-full">
+                Join the waitlist
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-
-      {/* Mobile Menu Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FBF6F6] dark:bg-[#050505] border-b border-black/10 dark:border-white/10 px-4 pt-4 pb-6 space-y-4 shadow-lg">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-md skeu-inset text-black dark:text-white text-xs font-mono w-fit">
-            <span className="w-2 h-2 rounded-full bg-[#636B2F] dark:bg-[#80EF80] animate-pulse" />
-            <span className="font-bold">10 kHz LOCK-IN ACTIVE</span>
-          </div>
-
-          <div className="flex flex-col space-y-3 pt-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-semibold text-black dark:text-white hover:text-[#636B2F] dark:hover:text-[#80EF80] transition-colors py-1"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenContact();
-            }}
-            className="w-full text-center skeu-btn font-bold py-2.5 rounded-xl shadow-sm mt-4"
-          >
-            Get in touch
-          </button>
-        </div>
-      )}
     </header>
   );
-};
+}

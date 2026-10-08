@@ -1,134 +1,33 @@
-import { useState, useEffect } from 'react';
-import Lenis from 'lenis';
-import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { TechStrip } from './components/TechStrip';
-import { Problem } from './components/Problem';
-import { HowItWorks } from './components/HowItWorks';
-import { Technology } from './components/Technology';
-import { Metrics } from './components/Metrics';
-import { Team } from './components/Team';
-import { Footer } from './components/Footer';
-import { ContactModal } from './components/ContactModal';
+import { Suspense, lazy, useEffect } from 'react';
+import { MotionConfig } from 'motion/react';
+import { Navbar } from '@/components/Navbar';
+import { Hero } from '@/sections/Hero';
+import { Footer } from '@/sections/Footer';
+import { startSmoothScroll } from '@/lib/smooth-scroll';
 
-export function App() {
-  const [contactOpen, setContactOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+const BelowFold = lazy(() => import('@/sections/BelowFold'));
 
-  // Initialize Lenis smooth scroll
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    });
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
-  // Sync dark mode class
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-
-  const sectionVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: 'easeOut',
-      },
-    },
-  };
+export default function App() {
+  useEffect(() => startSmoothScroll(), []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0A0A0A] text-black dark:text-white font-sans antialiased selection:bg-[#80EF80] selection:text-black transition-colors duration-300">
-      {/* Navigation */}
-      <Navbar
-        onOpenContact={() => setContactOpen(true)}
-        darkMode={darkMode}
-        onToggleDarkMode={() => setDarkMode(!darkMode)}
-      />
-
-      {/* Main Content Sections with Framer Motion Reveals */}
-      <main>
-        <Hero onOpenContact={() => setContactOpen(true)} />
-        
-        <TechStrip />
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={sectionVariants}
-        >
-          <Problem />
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={sectionVariants}
-        >
-          <HowItWorks />
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={sectionVariants}
-        >
-          <Technology />
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={sectionVariants}
-        >
-          <Metrics />
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={sectionVariants}
-        >
-          <Team />
-        </motion.div>
+    <MotionConfig reducedMotion="user">
+      <a
+        href="#main"
+        className="sr-only z-[100] rounded-full bg-button px-5 py-3 font-semibold text-on-primary focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+      >
+        Skip to content
+      </a>
+      {/* Static film grain over the whole page — one fixed layer, no blending. */}
+      <div aria-hidden className="grain pointer-events-none fixed inset-0 z-[60] opacity-[0.035] dark:opacity-[0.05]" />
+      <Navbar />
+      <main id="main" tabIndex={-1} className="outline-none">
+        <Hero />
+        <Suspense fallback={<div className="min-h-[100svh]" />}>
+          <BelowFold />
+        </Suspense>
       </main>
-
-      {/* Footer */}
-      <Footer onOpenContact={() => setContactOpen(true)} />
-
-      {/* Slide-over Contact Modal */}
-      <AnimatePresence>
-        {contactOpen && (
-          <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
-        )}
-      </AnimatePresence>
-    </div>
+      <Footer />
+    </MotionConfig>
   );
 }
-
-export default App;
