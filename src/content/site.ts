@@ -23,6 +23,14 @@ export const site = {
   domain: '{{TODO: production domain}}',
 };
 
+export const NAV_LINKS = [
+  { label: 'How it works', href: '#how-it-works' },
+  { label: 'Hardware', href: '#hardware' },
+  { label: 'App', href: '#app' },
+  { label: 'Roadmap', href: '#roadmap' },
+  { label: 'Team', href: '#team' },
+];
+
 export const stores = {
   /** Google Play URL once the Android app is published. */
   android: '{{TODO: Google Play link}}',
