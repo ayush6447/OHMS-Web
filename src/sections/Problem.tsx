@@ -88,7 +88,7 @@ export function Problem() {
           className="mt-4 flex flex-col gap-2 rounded-[28px] border border-dashed border-divider p-7 sm:flex-row sm:items-center sm:justify-between"
           aria-label="Statistic placeholder"
         >
-          <p className="text-title">
+          <p className="text-xl">
             <Text>{'{{TODO: sourced stat}}'}</Text>
           </p>
           <p className="text-sm text-muted-text">

@@ -27,7 +27,7 @@ function Dot({ status }: { status: MilestoneStatus }) {
         <span className="size-4 rounded-full bg-primary ring-4 ring-primary/20" />
       </span>
     );
-  return <span className="size-3.5 rounded-full border-2 border-divider bg-bg" />;
+  return <span className="block size-3.5 rounded-full border-2 border-divider bg-bg" />;
 }
 
 function Card({ m, index }: { m: (typeof roadmap)[number]; index: number }) {
@@ -117,7 +117,7 @@ export function Roadmap() {
           </div>
           <ol
             ref={track}
-            className="mt-8 flex gap-5 will-change-transform pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] pr-[10vw]"
+            className="mt-8 flex gap-5 will-change-transform pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))]"
           >
             {roadmap.map((m, i) => (
               <li key={m.title + i} className="w-[min(420px,36vw)] shrink-0">
@@ -127,6 +127,8 @@ export function Roadmap() {
                 <Card m={m} index={i} />
               </li>
             ))}
+            {/* trailing space so the last card can settle away from the edge */}
+            <li aria-hidden className="w-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] shrink-0" />
           </ol>
         </div>
       ) : (

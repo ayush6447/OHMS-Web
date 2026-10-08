@@ -128,20 +128,25 @@ export function AppShowcase() {
             <ol className="col-span-6 lg:col-span-5">
               {STEPS.map((s, i) => (
                 <li key={s.key} data-app-step className="flex min-h-[80vh] flex-col justify-center">
-                  <motion.div
-                    animate={{ opacity: active === i ? 1 : 0.28 }}
-                    transition={{ duration: 0.4 }}
-                  >
+                  <div>
                     <p className="font-mono text-sm text-primary-text">0{i + 1} · {s.key[0].toUpperCase() + s.key.slice(1)}</p>
-                    <h3 className="text-title mt-3 text-balance">{s.title}</h3>
-                    <p className="text-lede mt-4 text-muted-text">{s.body}</p>
+                    <h3
+                      className={`text-title mt-3 text-balance transition-colors duration-500 ${active === i ? 'text-ink' : 'text-muted-text'}`}
+                    >
+                      {s.title}
+                    </h3>
+                    <p
+                      className={`text-lede mt-4 text-muted-text transition-opacity duration-500 ${active === i ? 'opacity-100' : 'opacity-0'}`}
+                    >
+                      {s.body}
+                    </p>
                     {i === 3 && (
                       <p className="mt-5 inline-flex items-center gap-2 text-sm text-muted-text">
                         {phoneMode === 'dark' ? <Moon className="size-4" aria-hidden /> : <Sun className="size-4" aria-hidden />}
                         The phone is showing the {phoneMode} theme.
                       </p>
                     )}
-                  </motion.div>
+                  </div>
                 </li>
               ))}
             </ol>

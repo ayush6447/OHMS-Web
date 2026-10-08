@@ -41,7 +41,7 @@ export function Navbar() {
         {/* Frosted backdrop; fades in once the page has scrolled. */}
         <div
           aria-hidden
-          className="glass absolute inset-0 rounded-full transition-opacity duration-500"
+          className="glass absolute inset-0 rounded-full bg-[color-mix(in_srgb,var(--c-surface)_82%,transparent)] transition-opacity duration-500"
           style={{ opacity: scrolled || open ? 1 : 0.55 }}
         />
         <nav aria-label="Primary" className="relative flex h-14 items-center justify-between gap-2 pl-4 pr-2 sm:pl-5">

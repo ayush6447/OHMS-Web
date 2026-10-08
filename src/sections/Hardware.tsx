@@ -112,8 +112,8 @@ export function Hardware() {
       aria-labelledby="hardware-title"
       className={`relative overflow-hidden px-4 sm:px-6 ${reduced ? 'py-28' : 'flex min-h-[100svh] flex-col justify-center py-14'}`}
     >
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="max-w-2xl">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-x-10 lg:grid-cols-12">
+        <div className="max-w-2xl lg:col-span-4">
           <h2 id="hardware-title" className="eyebrow">
             Inside the hardware
           </h2>
@@ -121,11 +121,14 @@ export function Hardware() {
           <p className="text-lede mt-3 hidden text-muted-text sm:block">
             The v2 rebuild splits the device into modules, so every function lives on its own board.
           </p>
+          <p data-hw-caption className="mt-6 hidden font-mono text-[11px] text-muted-text lg:block">
+            Illustration · not to scale · physical stacking order may differ
+          </p>
         </div>
 
         <ol
-          className="mt-4 py-[calc(var(--wb)*0.17)] md:mt-6"
-          style={{ ['--wb' as string]: 'clamp(140px, min(40vw, calc(50svh - 130px)), 360px)' } as React.CSSProperties}
+          className="mt-4 py-[calc(var(--wb)*0.17)] md:mt-6 lg:col-span-8 lg:mt-0"
+          style={{ ['--wb' as string]: 'clamp(140px, min(40vw, calc(46svh - 90px)), 340px)' } as React.CSSProperties}
         >
           {LAYERS.map((l, i) => (
             <li
@@ -143,13 +146,13 @@ export function Hardware() {
                 <div className="min-w-0">
                   <h3 className="text-base font-semibold leading-tight tracking-[-0.02em] sm:text-xl">{l.name}</h3>
                   <p className="font-mono text-[11px] text-primary-text sm:text-xs">{l.part}</p>
-                  <p className="mt-1 hidden max-w-sm text-sm leading-snug text-muted-text md:block">{l.body}</p>
+                  <p className="mt-1 hidden max-w-xs text-sm leading-snug text-muted-text md:block">{l.body}</p>
                 </div>
               </div>
             </li>
           ))}
         </ol>
-        <p data-hw-caption className="mt-2 font-mono text-[11px] text-muted-text">
+        <p className="mt-2 font-mono text-[11px] text-muted-text lg:hidden">
           Illustration · not to scale · physical stacking order may differ
         </p>
       </div>

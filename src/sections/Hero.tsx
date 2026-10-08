@@ -18,10 +18,10 @@ import { site } from '@/content/site';
 const LightRays = lazy(() => import('@/components/reactbits/LightRays'));
 
 const CHIPS = [
-  { text: '1200 nm', className: 'left-[-150px] top-[70px]', depth: -120 },
-  { text: '1720 nm', className: 'right-[-150px] top-[150px]', depth: -200 },
-  { text: 'BLE · live', className: 'left-[-130px] top-[330px]', depth: -60 },
-  { text: '142 mmHg', className: 'right-[-140px] top-[400px]', depth: -150 },
+  { text: '1200 nm', className: 'left-[-160px] top-[90px]', depth: -50 },
+  { text: '1720 nm', className: 'right-[-160px] top-[170px]', depth: -100 },
+  { text: 'BLE · live', className: 'left-[-140px] top-[350px]', depth: -20 },
+  { text: '142 mmHg', className: 'right-[-150px] top-[430px]', depth: -70 },
 ];
 
 export function Hero() {
@@ -128,7 +128,7 @@ export function Hero() {
 
       <div
         data-hero-copy
-        className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-4 pt-32 text-center sm:px-6 sm:pt-36 md:pt-[18vh]"
+        className="relative z-30 mx-auto flex max-w-6xl flex-col items-center px-4 pt-32 text-center sm:px-6 sm:pt-36 md:pt-[16vh]"
       >
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -144,15 +144,15 @@ export function Hero() {
         </motion.p>
 
         {reduced ? (
-          <h1 id="hero-title" className="text-display text-balance max-w-[14ch] pb-[0.1em]">
+          <h1 id="hero-title" className="text-display text-balance max-w-[17ch] pb-[0.1em]">
             {site.tagline}
           </h1>
         ) : (
-          <div id="hero-title" className="max-w-[14ch]">
+          <div id="hero-title" className="flex w-full justify-center">
             <SplitText
               tag="h1"
               text={site.tagline}
-              className="text-display text-balance pb-[0.12em]"
+              className="text-display text-balance max-w-[17ch] pb-[0.12em]"
               splitType="chars"
               delay={22}
               duration={1}
@@ -207,7 +207,7 @@ export function Hero() {
       <div
         className={
           staged
-            ? 'perspective pointer-events-none absolute inset-x-0 top-[calc(100%-240px)] z-20 flex justify-center'
+            ? 'perspective pointer-events-none absolute inset-x-0 top-[calc(100%-210px)] z-20 flex justify-center'
             : 'perspective relative z-20 mt-14 flex justify-center px-4'
         }
       >

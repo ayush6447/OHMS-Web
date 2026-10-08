@@ -196,7 +196,7 @@ export function HowItWorks() {
                 <li
                   key={ph.name}
                   aria-current={on ? 'step' : undefined}
-                  className={`relative rounded-2xl py-3 pl-6 pr-4 transition-opacity duration-500 ${on ? 'opacity-100' : 'opacity-40'}`}
+                  className="relative rounded-2xl py-2.5 pl-6 pr-4"
                 >
                   <span
                     aria-hidden
@@ -204,9 +204,16 @@ export function HowItWorks() {
                   />
                   <p className="flex items-baseline gap-3">
                     <span className="font-mono text-xs text-primary-text">0{i + 1}</span>
-                    <span className="text-lg font-semibold tracking-[-0.02em]">{ph.name}</span>
+                    <span className={`text-lg font-semibold tracking-[-0.02em] transition-colors duration-500 ${on ? 'text-ink' : 'text-muted-text'}`}>
+                      {ph.name}
+                    </span>
                   </p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-text">{ph.body}</p>
+                  {/* Only the active phase shows its description (inactive text stays at full contrast). */}
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out-expo ${on ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                  >
+                    <p className="overflow-hidden pt-1 text-sm leading-relaxed text-muted-text">{ph.body}</p>
+                  </div>
                 </li>
               );
             })}
@@ -249,7 +256,7 @@ export function HowItWorks() {
 
           <div className="mt-3 grid gap-4 sm:grid-cols-[1.1fr_1fr] sm:items-center">
             {/* Finger, cuff and the two beams */}
-            <svg viewBox="0 0 260 190" className="h-[130px] w-full sm:h-[200px]" role="img" aria-label="Diagram: two LEDs at 1200 nm and 1720 nm shining through a finger held by an inflatable cuff, onto a photodiode.">
+            <svg viewBox="0 0 260 190" className="h-[165px] w-full sm:h-[200px]" role="img" aria-label="Diagram: two LEDs at 1200 nm and 1720 nm shining through a finger held by an inflatable cuff, onto a photodiode.">
               <defs>
                 <linearGradient id={`${uid}-b1`} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0" stopColor="var(--c-cyan)" stopOpacity="0.95" />
@@ -263,8 +270,8 @@ export function HowItWorks() {
               {/* LEDs */}
               <rect x="78" y="14" width="22" height="12" rx="3" fill="var(--c-cyan)" />
               <rect x="160" y="14" width="22" height="12" rx="3" fill="var(--c-pink)" />
-              <text x="89" y="9" textAnchor="middle" className="fill-ink font-mono text-[9px]">1200 nm</text>
-              <text x="171" y="9" textAnchor="middle" className="fill-ink font-mono text-[9px]">1720 nm</text>
+              <text x="89" y="9" textAnchor="middle" className="fill-ink font-mono text-[11px]">1200 nm</text>
+              <text x="171" y="9" textAnchor="middle" className="fill-ink font-mono text-[11px]">1720 nm</text>
               {/* beams */}
               <g ref={bind('beam1')} style={{ opacity: 0 }}>
                 <polygon points="80,26 98,26 112,166 66,166" fill={`url(#${uid}-b1)`} />
@@ -281,7 +288,7 @@ export function HowItWorks() {
               <rect x="20" y="80" width="220" height="32" rx="16" fill="none" stroke="var(--c-ring-start)" strokeWidth="1.2" />
               {/* photodiode */}
               <rect x="106" y="166" width="48" height="12" rx="3" fill="var(--c-primary)" />
-              <text x="130" y="188" textAnchor="middle" className="fill-ink font-mono text-[9px]">photodiode + TIA</text>
+              <text x="130" y="188" textAnchor="middle" className="fill-ink font-mono text-[11px]">photodiode + TIA</text>
             </svg>
 
             {/* Readouts */}
